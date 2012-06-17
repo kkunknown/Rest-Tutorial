@@ -15,14 +15,20 @@
 	<context:component-scan base-package="com.smartpants.artwork" />
 	
 	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:jdbc.properties" />
+	
+	
+	
 	<!-- Data Source -->
 	<jdbc:embedded-database id="dataSource" type="H2" />
 	
 	<bean id="mysqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="mysql://localhost:3306/program_tutorial" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>	
 	
 	
@@ -31,21 +37,42 @@
 	<bean id="sessionFactory"
 			class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
 			p:dataSource-ref="mysqlDataSource" 
-			p:lobHandler-ref="defaultLobHandler"
-			p:packagesToScan="com.smartpants.artwork.domain">
+			p:packagesToScan="
+				com.smartpants.artwork.domain,
+				kk.test.bean
+			">
 		<property name="hibernateProperties">
-			<value>
-				hibernate.dialect=org.hibernate.dialect.H2Dialect
-				hibernate.show_sql=true
-				hibernate.hbm2ddl.auto=create
-			</value>
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
 		</property>
 	</bean>
 	
-	<bean id="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+	<tx:annotation-driven proxy-target-class="true" />
 	<bean id="transactionManager" 
 			class="org.springframework.orm.hibernate3.HibernateTransactionManager"
 			p:sessionFactory-ref="sessionFactory" />
-	<tx:annotation-driven proxy-target-class="true" />
+	
+	
+	
+	<!-- Dao -->
+	<bean id="employeeDao" class="kk.test.dao.EmployeeDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	
+	<!-- Service -->
+	<bean id="testService" class="kk.test.service.TestService">
+		<property name="employeeDao"  ref="employeeDao"  />
+	</bean>
+	
+	
+
+	
+	
+	
+	
 
 </beans>

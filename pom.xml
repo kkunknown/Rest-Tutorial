@@ -6,12 +6,12 @@
 	<groupId>com.kk.tutorial</groupId>
   	<artifactId>kk-rest-tutorial</artifactId>
   	<packaging>war</packaging>
-  	<name>spring-rest</name>
+  	<name>rest-tutorial</name>
   	<version>0.1</version>
   	<description />
 	
 	<build>
-	    <finalName>spring-rest</finalName>
+	    <finalName>rest-tutorial</finalName>
 	    <plugins>
 	        <plugin>
 	            <artifactId>maven-compiler-plugin</artifactId>

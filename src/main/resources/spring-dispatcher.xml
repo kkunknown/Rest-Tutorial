@@ -16,7 +16,7 @@
 	<context:component-scan base-package="
 					com.smartpants.artwork.controllers, 
 					dw.spring3.rest.controller, 
-					com.kk.test.controller" />
+					kk.test.controller" />
 	
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	
@@ -51,6 +51,7 @@
 	
 	
 	
+	<!-- Controller -->
 	<bean id="employeeController" class="dw.spring3.rest.controller.EmployeeController">
 		<property name="employeeDS" ref="employeeDS" />
 		<property name="jaxb2Marshaller" ref="jaxb2Marshaller" />
@@ -58,7 +59,10 @@
 	
 	<bean id="employeeDS" class="dw.spring3.rest.ds.EmployeeDS" />
 	
-	
+		
+	<bean id="testController" class="kk.test.controller.TestController">
+		<property name="testService" ref="testService" />
+	</bean>
 	
 	
 	
