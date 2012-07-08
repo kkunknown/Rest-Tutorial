@@ -11,7 +11,9 @@
            http://www.springframework.org/schema/tx
            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
            http://www.springframework.org/schema/jdbc
-		   http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+		   http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		   http://www.springframework.org/schema/aop
+		   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 	
 	<context:component-scan base-package="
 					com.smartpants.artwork.controllers, 
@@ -50,16 +52,17 @@
 	</bean>
 	
 	
+	<bean id="employeeDS" class="dw.spring3.rest.ds.EmployeeDS" />
+	
+	
+	
+	<aop:aspectj-autoproxy />
 	
 	<!-- Controller -->
 	<bean id="employeeController" class="dw.spring3.rest.controller.EmployeeController">
 		<property name="employeeDS" ref="employeeDS" />
 		<property name="jaxb2Marshaller" ref="jaxb2Marshaller" />
 	</bean>
-	
-	<bean id="employeeDS" class="dw.spring3.rest.ds.EmployeeDS" />
-	
-		
 	<bean id="testController" class="kk.test.controller.TestController">
 		<property name="testService" ref="testService" />
 	</bean>

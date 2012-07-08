@@ -4,14 +4,14 @@
     
     <modelVersion>4.0.0</modelVersion>
 	<groupId>com.kk.tutorial</groupId>
-  	<artifactId>kk-rest-tutorial</artifactId>
+  	<artifactId>kk-spring-tutorial</artifactId>
   	<packaging>war</packaging>
-  	<name>rest-tutorial</name>
+  	<name>spring-tutorial</name>
   	<version>0.1</version>
   	<description />
 	
 	<build>
-	    <finalName>rest-tutorial</finalName>
+	    <finalName>spring-tutorial</finalName>
 	    <plugins>
 	        <plugin>
 	            <artifactId>maven-compiler-plugin</artifactId>
@@ -121,6 +121,24 @@
 		   <artifactId>spring-security-config</artifactId>
 		   <version>${spring.framework.security.version}</version>
 		 </dependency>
+		
+		<!-- Spring AOP + AspectJ -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>${spring.framework.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjrt</artifactId>
+		    <version>1.6.11</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.6.11</version>
+		</dependency>
+		
 	    
 	    
 	    

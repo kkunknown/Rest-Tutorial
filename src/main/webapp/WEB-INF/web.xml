@@ -5,8 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	version="2.4">
 	
-	<display-name>ArtworkWeb</display-name>
-	<description>ArtWork</description>
+	<display-name>Spring Tutorial</display-name>
 	<distributable />
 	
 	<context-param>
@@ -28,7 +27,7 @@
 	
 	
 	<servlet>
-		<servlet-name>artworkWeb</servlet-name>
+		<servlet-name>springTutorial</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -44,7 +43,7 @@
 		- refering to the "image" servlet above 
 	 -->
 	 <servlet-mapping>
-	 	<servlet-name>artworkWeb</servlet-name>
+	 	<servlet-name>springTutorial</servlet-name>
 	 	<url-pattern>/*</url-pattern>
 	 </servlet-mapping>
 	 

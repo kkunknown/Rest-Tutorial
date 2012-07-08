@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,7 +61,6 @@ public class TestController {
 		return "Welcom to 'Home page' " + employees.get(0).getName() + " ~~~ " + employees.get(1).getName();
 	}
 	
-	
 	@RequestMapping(value="/employee-list", method=RequestMethod.GET)
 	public @ResponseBody List showEmployeeList(){
 		return testService.showEmployees();
@@ -71,5 +71,13 @@ public class TestController {
 	public @ResponseBody String httpBasicTest(){
 		return "sccessful";
 	}
+
+	
+	@RequestMapping(value="/testing/{a}", method=RequestMethod.GET)
+	public @ResponseBody String testing(
+			@PathVariable("a") String a ){
+		return "testing.................." + a ;
+	}
+	
 	
 }
